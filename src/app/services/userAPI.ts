@@ -1,6 +1,6 @@
-import type { Token, User } from "../types/types"
-import type { UserAuth, Auth } from "../types/interfaces"
-import { API } from "./API"
+import type { Token, User } from "../types/types";
+import type { UserAuth, Auth } from "../types/interfaces";
+import { API } from "./API";
 
 export const userAPI = API.injectEndpoints({
   endpoints: builder => ({
@@ -21,7 +21,7 @@ export const userAPI = API.injectEndpoints({
     current: builder.query<User, void>({
       query: () => ({
         url: "/current",
-        method: "/GET",
+        method: "GET",
       }),
     }),
     getUserById: builder.query<User, string>({
@@ -38,7 +38,7 @@ export const userAPI = API.injectEndpoints({
       }),
     }),
   }),
-})
+});
 
 export const {
   useLoginMutation,
@@ -48,8 +48,8 @@ export const {
   useGetUserByIdQuery,
   useLazyGetUserByIdQuery,
   useUpdateUserMutation,
-} = userAPI
+} = userAPI;
 
 export const {
   endpoints: { login, register, current, getUserById, updateUser },
-} = userAPI
+} = userAPI;

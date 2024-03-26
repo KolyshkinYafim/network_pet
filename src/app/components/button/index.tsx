@@ -1,13 +1,13 @@
 import { Button as NextButton } from "@nextui-org/react";
-import type { ButtonType, ButtonColor } from "../../enums";
+import type { ButtonProps } from "@nextui-org/react";
 
 type Props = {
   children: React.ReactNode;
-  icon: JSX.Element;
-  className: string;
-  type?: ButtonType;
+  icon?: JSX.Element;
+  className?: string;
+  type?: ButtonProps["type"];
   fullWidth?: boolean;
-  color?: ButtonColor;
+  color?: ButtonProps["color"];
 };
 
 const Button: React.FC<Props> = ({
@@ -18,7 +18,19 @@ const Button: React.FC<Props> = ({
   fullWidth,
   color,
 }) => {
-  return <NextButton startContent={icon} size="lg" color={color}></NextButton>;
+  return (
+    <NextButton
+      startContent={icon}
+      size="lg"
+      color={color}
+      variant="light"
+      className={className}
+      fullWidth={fullWidth}
+      type={type}
+    >
+      {children}
+    </NextButton>
+  );
 };
 
 export default Button;

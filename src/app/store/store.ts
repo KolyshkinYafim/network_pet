@@ -1,9 +1,23 @@
+import { useSelector, type TypedUseSelectorHook } from "react-redux";
 import type { Action, ThunkAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import { API } from "../services/API";
+import userSlice from "./slices/userSlice";
+import { combineReducers } from "@reduxjs/toolkit";
+import { listenerMiddleware } from "@/middleware/auth";
+
+const rootReducer = combineReducers({
+  [API.reducerPath]: API.reducer,
+  userSlice,
+});
 
 export const store = configureStore({
-  reducer: { [API.reducerPath]: API.reducer },
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware => {
+    return getDefaultMiddleware()
+      .concat(API.middleware)
+      .prepend(listenerMiddleware.middleware);
+  },
 });
 
 export type AppStore = typeof store;
@@ -15,3 +29,5 @@ export type AppThunk<ThunkReturnType = void> = ThunkAction<
   unknown,
   Action
 >;
+
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;

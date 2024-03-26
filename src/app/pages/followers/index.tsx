@@ -1,5 +1,5 @@
 const FollowersPage = () => {
-  return <div>index</div>;
+  return <div>followers</div>;
 };
 
 export default FollowersPage;

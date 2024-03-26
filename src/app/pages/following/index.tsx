@@ -1,5 +1,5 @@
 const FollowingPage = () => {
-  return <div>index</div>;
+  return <div>following</div>;
 };
 
 export default FollowingPage;

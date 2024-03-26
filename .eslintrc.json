@@ -15,13 +15,14 @@
       2,
       { "fixStyle": "separate-type-imports" }
     ],
+    "no-restricted-imports": "off",
     "@typescript-eslint/no-restricted-imports": [
       2,
       {
         "paths": [
           {
             "name": "react-redux",
-            "importNames": ["useSelector", "useStore", "useDispatch"],
+            "importNames": ["useStore", "useDispatch"],
             "message": "Please use pre-typed versions from `src/app/hooks.ts` instead."
           }
         ]

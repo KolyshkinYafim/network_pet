@@ -1,4 +1,5 @@
-import { Button } from "@nextui-org/react";
+import Button from "@components/button";
+import { Link } from "react-router-dom";
 
 type Props = {
   children: React.ReactNode;
@@ -7,7 +8,11 @@ type Props = {
 };
 
 const NavButton: React.FC<Props> = ({ children, icon, href }) => {
-  return <Button className="flex justify-start text-xl"></Button>;
+  return (
+    <Button className="flex justify-start text-xl" icon={icon}>
+      <Link to={href}>{children}</Link>
+    </Button>
+  );
 };
 
 export default NavButton;
