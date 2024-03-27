@@ -3,8 +3,6 @@ import { Spinner } from "@nextui-org/react";
 
 const AuthGuard: React.FC<{ children: JSX.Element }> = ({ children }) => {
   const { isLoading } = useCurrentQuery();
-  console.log(isLoading);
-  console.log(useCurrentQuery());
 
   if (isLoading) {
     return (
