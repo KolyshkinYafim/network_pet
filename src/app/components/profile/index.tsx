@@ -16,7 +16,7 @@ const Profile: React.FC = () => {
         <Image
           alt="no image for card profile"
           className="object-cover-rounded-xl"
-          src={(BASE_URL + current?.avatarURL).toString()}
+          src={(BASE_URL + current?.avatarUrl).toString()}
           width={370}
         />
       </CardHeader>
@@ -36,9 +36,9 @@ const Profile: React.FC = () => {
 export default Profile;
 
 // for (const key in current) {
-//     if (Object.prototype.hasOwnProperty.call(current, key)) {
-//       const propValue = current[key as keyof typeof current];
+//   if (Object.prototype.hasOwnProperty.call(current, key)) {
+//     const propValue = current[key as keyof typeof current];
 
-//       console.log(`${key} ${propValue}`);
-//     }
+//     console.log(`${key} ${propValue}`);
 //   }
+// }

@@ -1,4 +1,4 @@
-import { API } from "./API"
+import { API } from "./API";
 
 export const commentsAPI = API.injectEndpoints({
   endpoints: builder => ({
@@ -16,11 +16,11 @@ export const commentsAPI = API.injectEndpoints({
       }),
     }),
   }),
-})
+});
 
 export const { useCreateCommentMutation, useDeleteCommentMutation } =
-  commentsAPI
+  commentsAPI;
 
 export const {
   endpoints: { createComment, deleteComment },
-} = commentsAPI
+} = commentsAPI;

@@ -3,7 +3,7 @@ export type User = {
   email: string;
   password: string;
   name?: string;
-  avatarURL?: string;
+  avatarUrl?: string;
   dateOfBirth?: Date;
   createdAt: Date;
   updatedAt: Date;
