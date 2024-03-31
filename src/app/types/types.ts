@@ -10,7 +10,7 @@ export type User = {
   bio?: string;
   location?: string;
   posts: Post[];
-  followings: Follows[];
+  following: Follows[];
   followers: Follows[];
   likes: Like[];
   comments: Comment[];

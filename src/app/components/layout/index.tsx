@@ -18,6 +18,7 @@ const Layout = () => {
     }
   }, []);
 
+  console.log(user);
   return (
     <>
       <Header />

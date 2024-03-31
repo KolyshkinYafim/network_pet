@@ -1,5 +1,6 @@
 import BackButton from "@/app/components/back-button";
 import CountInfo from "@/app/components/count-info";
+import ProfileEdit from "@/app/components/profile-edit";
 import ProfileInfo from "@/app/components/profile-info";
 import { BASE_URL } from "@/app/constants/constants";
 import { useAppDispatch } from "@/app/hooks/hooks";
@@ -35,9 +36,25 @@ const UserProfilePage = () => {
   const [triggerCurrentQuery] = useLazyCurrentQuery();
 
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(resetUser());
-  }, []);
+
+  const handleClose = async () => {
+    try {
+      if (id) {
+        await triggerGetUserById(id);
+        await triggerCurrentQuery();
+        onClose();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(
+    () => () => {
+      dispatch(resetUser());
+    },
+    [],
+  );
   if (!data) return null;
 
   const handleFolow = async () => {
@@ -96,7 +113,9 @@ const UserProfilePage = () => {
               {data.isFollowing ? "Unfollow" : "Follow"}
             </Button>
           ) : (
-            <Button endContent={<CiEdit />}>Edit profile</Button>
+            <Button endContent={<CiEdit />} onClick={() => onOpen()}>
+              Edit profile
+            </Button>
           )}
         </Card>
         <Card className="flex flex-col space-y-4 p-5 flex-1">
@@ -109,10 +128,15 @@ const UserProfilePage = () => {
           />
           <div className="flex gap-2">
             <CountInfo count={data.followers?.length} title={"Followers"} />
-            <CountInfo count={data.followings?.length} title={"Followings"} />
+            <CountInfo count={data.following?.length} title={"Followings"} />
           </div>
         </Card>
       </div>
+      <ProfileEdit
+        isOpen={isOpen}
+        onClose={handleClose}
+        user={data}
+      ></ProfileEdit>
     </>
   );
 };

@@ -115,8 +115,9 @@ const Card: React.FC<Props> = ({
       likedByUser
         ? await unlikePost(id).unwrap()
         : await likePost({ postId: id }).unwrap();
+      if (cardFor === "current-post") await triggerGetPostById(id).unwrap();
 
-      await triggerGetPostById(id).unwrap();
+      if (cardFor === "post") await triggerGetAllPosts().unwrap();
     } catch (error) {
       if (hasErrorField(error)) {
         setError(error.data.error);
